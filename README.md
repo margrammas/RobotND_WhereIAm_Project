@@ -1,6 +1,8 @@
-# RoboND-Term1-P3-Where-Am-I
+# RoboND - Project3: Where I Am
 Project 3 of Udacity Robotics Software Engineer Nanodegree Program
+
 ![Overview](sample.gif)  
+
 ## Overview  
 In this project you'll utilize ROS AMCL package to accurately localize a mobile robot inside a map in the Gazebo simulation environments. Here are the steps to learn several aspects of robotic software engineering with a focus on ROS:  
 * Create a ROS package that launches a custom robot model in a custom Gazebo world  
@@ -44,90 +46,109 @@ sudo apt-get update && sudo apt-get upgrade -y
 ## Project Description  
 Directory Structure  
 ```
-.Where-Am-I                                    # Where Am I Project
-├── catkin_ws                                  # Catkin workspace
-│   ├── src
-│   │   ├── ball_chaser                        # ball_chaser package        
-│   │   │   ├── launch                         # launch folder for launch files
-│   │   │   │   ├── ball_chaser.launch
-│   │   │   ├── src                            # source folder for C++ scripts
-│   │   │   │   ├── drive_bot.cpp
-│   │   │   │   ├── process_images.cpp
-│   │   │   ├── srv                            # service folder for ROS services
-│   │   │   │   ├── DriveToTarget.srv
-│   │   │   ├── CMakeLists.txt                 # compiler instructions
-│   │   │   ├── package.xml                    # package info
-│   │   ├── my_gokart                          # my_gokart package        
-│   │   │   ├── launch                         # launch folder for launch files   
-│   │   │   │   ├── gokart_description.launch
-│   │   │   │   ├── world.launch
-│   │   │   ├── urdf                           # urdf folder for xarco files
-│   │   │   │   ├── my_gokart.gazebo
-│   │   │   │   ├── my_gokart.xacro
-│   │   │   ├── worlds                         # world folder for world files
-│   │   │   │   ├── empty.world
-│   │   │   │   ├── myoffice.world
-│   │   │   ├── CMakeLists.txt                 # compiler instructions
-│   │   │   ├── package.xml                    # package info
-│   │   ├── my_robot                           # my_robot package        
-│   │   │   ├── config                         # config folder for configuration files   
-│   │   │   │   ├── base_local_planner_params.yaml
-│   │   │   │   ├── costmap_common_params.yaml
-│   │   │   │   ├── global_costmap_params.yaml
-│   │   │   │   ├── local_costmap_params.yaml
-│   │   │   ├── launch                         # launch folder for launch files   
-│   │   │   │   ├── amcl.launch
-│   │   │   │   ├── robot_description.launch
-│   │   │   │   ├── world.launch
-│   │   │   ├── maps                           # maps folder for maps
-│   │   │   │   ├── myoffice.pgm
-│   │   │   │   ├── myoffice.yaml
-│   │   │   ├── meshes                         # meshes folder for sensors
-│   │   │   │   ├── hokuyo.dae
-│   │   │   ├── rviz                           # rviz folder for rviz configuration files
-│   │   │   │   ├── default.rviz
-│   │   │   ├── urdf                           # urdf folder for xarco files
-│   │   │   │   ├── my_robot.gazebo
-│   │   │   │   ├── my_robot.xacro
-│   │   │   ├── worlds                         # world folder for world files
-│   │   │   │   ├── empty.world
-│   │   │   │   ├── myoffice.world
-│   │   │   ├── CMakeLists.txt                 # compiler instructions
-│   │   │   ├── package.xml                    # package info
-│   │   ├── pgm_map_creator                    # pgm_map_creator        
-│   │   │   ├── launch                         # launch folder for launch files   
-│   │   │   │   ├── request_publisher.launch
-│   │   │   ├── maps                           # maps folder for generated maps
-│   │   │   │   ├── Backup_map.pgm
-│   │   │   │   ├── map.pgm
-│   │   │   ├── msgs                           # msgs folder for communication files
-│   │   │   │   ├── CMakeLists.txt
-│   │   │   │   ├── collision_map_request.proto
-│   │   │   ├── src                            # src folder for main function
-│   │   │   │   ├── collision_map_creator.cc
-│   │   │   │   ├── request_publisher.cc
-│   │   │   ├── world                          # world folder for world files
-│   │   │   │   ├── myoffice.world
-│   │   │   │   ├── udacity_mtv
-│   │   │   ├── CMakeLists.txt                 # compiler instructions
-│   │   │   ├── LICENSE                        # License for repository
-│   │   │   ├── README.md                      # README for documentation
-│   │   │   ├── package.xml                    # package info
-│   │   ├── teleop_twist_keyboard              # teleop_twist_keyboard
-│   │   │   ├── CHANGELOG.rst                  # change log
-│   │   │   ├── CMakeLists.txt                 # compiler instructions
-│   │   │   ├── README.md                      # README for documentation
-│   │   │   ├── package.xml                    # package info
-│   │   │   ├── teleop_twist_keyboard.py       # keyboard controller
-├── my_ball                                    # Model files 
-│   ├── model.config
-│   ├── model.sdf
-├── videos                                     # Video files
-│   ├── Term1-Project3-Where-Am-I-Demo_1.gif   # Demo video
-│   ├── Term1-Project3-Where-Am-I-Demo_2.gif   # Demo video
-│   ├── Term1-Project3-Where-Am-I-Demo_3.gif   # Demo video
-│   ├── Term1-Project3-Where-Am-I-Demo_4.gif   # Demo video
-```
+.Where-I-Am                                    
+└── catkin_ws
+    ├── build
+    │   ├── atomic_configure
+    │   ├── catkin
+    │   │   └── catkin_generated
+    │   │       └── version
+    │   ├── catkin_generated
+    │   │   ├── installspace
+    │   │   └── stamps
+    │   │       └── Project
+    │   ├── CMakeFiles
+    │   │   ├── 3.5.1
+    │   │   │   ├── CompilerIdC
+    │   │   │   └── CompilerIdCXX
+    │   │   ├── clean_test_results.dir
+    │   │   ├── CMakeTmp
+    │   │   ├── download_extra_data.dir
+    │   │   ├── doxygen.dir
+    │   │   ├── run_tests.dir
+    │   │   └── tests.dir
+    │   ├── gtest
+    │   │   ├── CMakeFiles
+    │   │   │   ├── gmock.dir
+    │   │   │   │   ├── src
+    │   │   │   │   └── usr
+    │   │   │   │       └── src
+    │   │   │   │           └── gtest
+    │   │   │   │               └── src
+    │   │   │   └── gmock_main.dir
+    │   │   │       ├── src
+    │   │   │       └── usr
+    │   │   │           └── src
+    │   │   │               └── gtest
+    │   │   │                   └── src
+    │   │   └── gtest
+    │   │       └── CMakeFiles
+    │   │           ├── gtest.dir
+    │   │           │   └── src
+    │   │           └── gtest_main.dir
+    │   │               └── src
+    │   ├── my_robot
+    │   │   ├── catkin_generated
+    │   │   │   ├── installspace
+    │   │   │   └── stamps
+    │   │   │       └── my_robot
+    │   │   └── CMakeFiles
+    │   │       └── _catkin_empty_exported_target.dir
+    │   ├── pgm_map_creator
+    │   │   ├── catkin_generated
+    │   │   │   ├── installspace
+    │   │   │   └── stamps
+    │   │   │       └── pgm_map_creator
+    │   │   ├── CMakeFiles
+    │   │   │   ├── collision_map_creator.dir
+    │   │   │   │   └── src
+    │   │   │   ├── request_publisher.dir
+    │   │   │   │   └── src
+    │   │   │   ├── roscpp_generate_messages_cpp.dir
+    │   │   │   ├── roscpp_generate_messages_eus.dir
+    │   │   │   ├── roscpp_generate_messages_lisp.dir
+    │   │   │   ├── roscpp_generate_messages_nodejs.dir
+    │   │   │   ├── roscpp_generate_messages_py.dir
+    │   │   │   ├── rosgraph_msgs_generate_messages_cpp.dir
+    │   │   │   ├── rosgraph_msgs_generate_messages_eus.dir
+    │   │   │   ├── rosgraph_msgs_generate_messages_lisp.dir
+    │   │   │   ├── rosgraph_msgs_generate_messages_nodejs.dir
+    │   │   │   ├── rosgraph_msgs_generate_messages_py.dir
+    │   │   │   ├── std_msgs_generate_messages_cpp.dir
+    │   │   │   ├── std_msgs_generate_messages_eus.dir
+    │   │   │   ├── std_msgs_generate_messages_lisp.dir
+    │   │   │   ├── std_msgs_generate_messages_nodejs.dir
+    │   │   │   └── std_msgs_generate_messages_py.dir
+    │   │   └── msgs
+    │   │       └── CMakeFiles
+    │   │           └── collision_map_creator_msgs.dir
+    │   └── test_results
+    ├── devel
+    │   ├── lib
+    │   │   ├── pgm_map_creator
+    │   │   └── pkgconfig
+    │   └── share
+    │       ├── my_robot
+    │       │   └── cmake
+    │       └── pgm_map_creator
+    │           └── cmake
+    └── src
+        ├── my_robot
+        │   ├── config
+        │   │   └── __MACOSX
+        │   ├── launch
+        │   ├── maps
+        │   ├── meshes
+        │   ├── urdf
+        │   └── worlds
+        │       └── worldchasesim
+        └── pgm_map_creator
+            ├── launch
+            ├── maps
+            ├── msgs
+            ├── src
+            └── world
+
 
 
 ## Run the project  
@@ -137,14 +158,16 @@ git clone https://github.com/jinchaolu/RoboND-Term1-P3-Where-Am-I.git
 ```
 * Open the repository and make  
 ```
-cd /home/workspace/RoboND-Term1-P3-Where-Am-I/catkin_ws/
+cd /home/workspace/WhereIAm/
 catkin_make
+source devel/setup.bash
+
 ```
-* Launch my_robot in Gazebo to load both the world and plugins  
+* Open two different terminal windows and launch rispectively my_robot in Gazebo to load both the world and plugins  
 ```
 roslaunch my_robot world.launch
 ```  
-* Launch amcl node  
+* And launch amcl node  
 ```
 roslaunch my_robot amcl.launch
 ```  
