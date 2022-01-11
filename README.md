@@ -28,7 +28,7 @@ sudo apt-get install ros-kinetic-move-base
 sudo apt-get install ros-kinetic-amcl
 ```
 
-## Setup Instructions (abbreviated)  
+## Setup Instructions
 1. Meet the `Prerequisites/Dependencies`  
 2. Open Ubuntu Bash and clone the project repository  
 3. On the command line execute  
