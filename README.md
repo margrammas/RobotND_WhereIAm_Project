@@ -151,7 +151,7 @@ git clone https://github.com/margrammas/WhereIAm.git
 ```
 * Open the repository and make  
 ```
-cd /home/workspace/WhereIAm/
+cd /home/workspace/WhereIAm/catkin_ws
 catkin_make
 source devel/setup.bash
 ```
