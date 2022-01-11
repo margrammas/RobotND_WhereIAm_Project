@@ -164,16 +164,16 @@ roslaunch my_robot world.launch
 roslaunch my_robot amcl.launch
 ```  
 * Testing  
-You have two options to control your robot while it localize itself here:  
+You have two options to control your robot while it localizes itself:  
   * Send navigation goal via RViz  
   * Send move command via teleop package.  
 Navigate your robot, observe its performance and tune your parameters for AMCL.  
 
 **Selected Option: Send `2D Navigation Goal`**  
-Your first option would be sending a `2D Nav Goal` from RViz. The `move_base` will try to navigate your robot based on the localization. Based on the new observation and the odometry, the robot to further perform the localization.  
+`2D Nav Goal` will be sent from RViz. The `move_base` will try to navigate your robot based on the localization. Based on the new observation and the odometry, the robot to further perform the localization.  
 Click the `2D Nav Goal` button in the toolbar, then click and drag on the map to send the goal to the robot. It will start moving and localize itself in the process. If you would like to give `amcl` node a nudge, you could give the robot an initial position estimate on the map using `2D Pose Estimate`.  
 
-You could control your robot by keyboard commands now.  
+Now you can play with the robot and see how it moves around. 
 
 ## Tips  
 1. It's recommended to update and upgrade your environment before running the code.  
