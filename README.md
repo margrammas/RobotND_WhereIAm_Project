@@ -159,7 +159,7 @@ source devel/setup.bash
 ```
 roslaunch my_robot world.launch
 ```  
-* And launch amcl node  
+* And launch amcl node in the other  
 ```
 roslaunch my_robot amcl.launch
 ```  
