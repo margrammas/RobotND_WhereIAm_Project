@@ -1,4 +1,4 @@
-# RoboND - Project3: Where I Am
+# RobotND - Project3: Where I Am
 Project 3 of Udacity Robotics Software Engineer Nanodegree Program
 
 ![Overview](sample.gif)  
